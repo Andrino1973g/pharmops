@@ -69,8 +69,8 @@ All build commands in this guide use bash syntax. If you are on **Windows PowerS
 | Bash (Mac/Linux/Git Bash) | PowerShell (Windows) |
 |--------------------------|---------------------|
 | `export AWS_ACCOUNT_ID=$(aws sts ...)` | `$env:AWS_ACCOUNT_ID = aws sts ...` |
-| `${AWS_ACCOUNT_ID}` | `$env:AWS_ACCOUNT_ID` |
-| `${REGISTRY}/api-gateway:v1.0.0` | `"$env:REGISTRY/api-gateway:v1.0.0"` |
+| `echo ${AWS_ACCOUNT_ID}` | `$env:AWS_ACCOUNT_ID` |
+| `echo ${REGISTRY}/api-gateway:v1.0.0` | `"$env:REGISTRY/api-gateway:v1.0.0"` |
 
 PowerShell example for ECR login and image build:
 ```powershell
