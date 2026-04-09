@@ -517,6 +517,10 @@ for MACOS
 # Update pharma-ui raw manifest
 sed -i "s|image:.*pharma-ui.*|image: ${REGISTRY}/pharma-ui:${IMAGE_TAG}|" \
   k8s-manifests/pharma-ui/deployment.yaml
+or
+sed -i '' "s|image:.*pharma-ui.*|image: ${REGISTRY}/pharma-ui:${IMAGE_TAG}|" \
+  k8s-manifests/pharma-ui/deployment.yaml
+for MACOS
 
 git add .
 git commit -m "chore: set image tags to ${IMAGE_TAG} for dev"
