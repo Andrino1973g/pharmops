@@ -475,6 +475,19 @@ for repo in api-gateway auth-service catalog-service notification-service pharma
   aws ecr describe-images --repository-name $repo \
     --query 'imageDetails[0].imageTags[0]' --output text 2>/dev/null || echo "NOT FOUND"
 done
+##### did not work, returned none. I used below code from chat GPT instead, and it worked#####
+for repo in api-gateway auth-service catalog-service notification-service pharma-ui; do
+  tag=$(aws ecr describe-images --repository-name $repo \
+    --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]' \
+    --output text 2>/dev/null)
+
+  if [ "$tag" = "None" ] || [ -z "$tag" ]; then
+    echo "$repo: NOT FOUND"
+  else
+    echo "$repo: $tag"
+  fi
+done
+
 # Expected: each shows v1.0.0
 ```
 
