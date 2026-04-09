@@ -508,6 +508,11 @@ export IMAGE_TAG="v1.0.0"
 for svc in api-gateway auth-service catalog-service notification-service; do
   sed -i "s|tag:.*|tag: ${IMAGE_TAG}|" "envs/dev/values-${svc}.yaml"
 done
+or
+for svc in api-gateway auth-service catalog-service notification-service; do
+  sed -i '' "s|tag:.*|tag: ${IMAGE_TAG}|" "envs/dev/values-${svc}.yaml"
+done
+for MACOS
 
 # Update pharma-ui raw manifest
 sed -i "s|image:.*pharma-ui.*|image: ${REGISTRY}/pharma-ui:${IMAGE_TAG}|" \
