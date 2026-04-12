@@ -118,7 +118,7 @@ Quick replace (run from inside `pharmops-gitops`):
 ```bash
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 find envs/dev k8s-manifests -name "*.yaml" -exec \
-  sed -i "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g" {} \;
+  sed -i '' "s/471112718685/$AWS_ACCOUNT_ID/g" {} \;
 ```
 
 ### 2.2 `<RDS_ENDPOINT>` → Your RDS hostname
