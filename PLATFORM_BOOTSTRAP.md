@@ -396,9 +396,9 @@ kubectl run psql-init \
   --image=postgres:15-alpine \
   --namespace=dev \
   --restart=Never \
-  --env="PGPASSWORD=<YOUR_DB_PASSWORD>" \
-  -- psql -h ${RDS_ENDPOINT} -U pharma -d pharmadb \
-  -f /dev/stdin < pharmops-gitops/db-init/01-schemas.sql
+  --env=PGPASSWORD=PharmaSecure2024Dev! \
+  -- psql -h ${RDS_ENDPOINT} -U pharmaadmin -d pharmadb \
+  -f /dev/stdin < /Users/nnamdi/dpp/pharmops-gitops/db-init/01-schemas.sql
 
 kubectl logs psql-init -n dev
 kubectl delete pod psql-init -n dev
