@@ -133,8 +133,8 @@ terraform output rds_endpoint
 
 Quick replace:
 ```bash
-RDS_ENDPOINT="<your-rds-endpoint>"
-find envs/dev -name "*.yaml" -exec \
+# RDS_ENDPOINT="<your-rds-endpoint>"
+find . -name "*.yaml" -exec \
   sed -i "s/<RDS_ENDPOINT>/$RDS_ENDPOINT/g" {} \;
 ```
 
