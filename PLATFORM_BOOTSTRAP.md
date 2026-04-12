@@ -441,25 +441,25 @@ Build and push each service. The `--platform linux/amd64` flag is required — E
 cd pharmops
 
 # api-gateway
-docker buildx build --platform linux/amd64 \
+docker buildx build --platform linux/amd64, linux/arm64 \
   -t ${REGISTRY}/api-gateway:${IMAGE_TAG} --push services/api-gateway
 
 # auth-service
-docker buildx build --platform linux/amd64 \
+docker buildx build --platform linux/amd64, linux/arm64 \
   -t ${REGISTRY}/auth-service:${IMAGE_TAG} --push services/auth-service
 
 # catalog-service (ECR repo name is catalog-service, directory is drug-catalog-service)
-docker buildx build --platform linux/amd64 \
+docker buildx build --platform linux/amd64, linux/arm64 \
   -t ${REGISTRY}/catalog-service:${IMAGE_TAG} --push services/drug-catalog-service
 
 # notification-service
-docker buildx build --platform linux/amd64 \
+docker buildx build --platform linux/amd64, linux/arm64 \
   -t ${REGISTRY}/notification-service:${IMAGE_TAG} --push services/notification-service
 
 # pharma-ui
 # Important: .env.production (REACT_APP_API_URL=/api) is baked in at build time.
 # Do not remove this file — without it the login page cannot reach the API.
-docker buildx build --platform linux/amd64 \
+docker buildx build --platform linux/amd64, linux/arm64 \
   -t ${REGISTRY}/pharma-ui:${IMAGE_TAG} --push services/pharma-ui
 ```
 
