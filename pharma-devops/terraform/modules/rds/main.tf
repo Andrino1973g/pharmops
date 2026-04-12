@@ -39,7 +39,7 @@ resource "aws_security_group" "rds" {
 resource "aws_db_instance" "main" {
   identifier             = "${var.project}-${var.env}-postgres"
   engine                 = "postgres"
-  engine_version         = "15.7"
+  engine_version         = "15"
   instance_class         = "db.t3.micro"
   allocated_storage      = 20
   storage_type           = "gp2"
@@ -54,6 +54,7 @@ resource "aws_db_instance" "main" {
   storage_encrypted      = true
   deletion_protection    = var.env == "prod" ? true : false
   publicly_accessible    = false
+  allow_major_version_upgrade = true
 
   tags = {
     Name    = "${var.project}-${var.env}-postgres"
