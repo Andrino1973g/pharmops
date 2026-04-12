@@ -409,12 +409,12 @@ kubectl delete pod psql-init -n dev
 ### ✅ Validation — Step 4
 
 ```bash
-kubectl run psql-check \
+run psql-check \            
   --image=postgres:15-alpine \
   --namespace=dev \
   --restart=Never \
-  --env="PGPASSWORD=<YOUR_DB_PASSWORD>" \
-  -- psql -h ${RDS_ENDPOINT} -U pharma -d pharmadb \
+  --env=PGPASSWORD=PharmaSecure2024Dev! \
+  -- psql -h ${RDS_ENDPOINT} -U pharmaadmin -d pharmadb \
   -c "\dn"
 kubectl logs psql-check -n dev
 # Expected: schemas listed — auth, drug_catalog (and others)
